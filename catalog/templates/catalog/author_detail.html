@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author.first_name }}, {{ author.last_name }}</h1>
+
+  <p>{{ author.date_of_birth }}</p>
+
+  <p><strong>Books:</strong> </p>
+    {% for book in author.book_set.all %}
+        <b><a href="{{ book.get_absolute_url }}" text-decoration:none>{{ book.title }}</a></b>
+        <br>
+        {{ book.summary }}
+        <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>
+    {% endfor %}
+
+  </div>
+{% endblock %}
